@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
     [SerializeField] float maxSpeed = 1f;
     private void Start()
     {
-            
+
     }
     private void Update()
     {
