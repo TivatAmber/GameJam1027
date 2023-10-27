@@ -25,7 +25,7 @@ public class FireWallMagic : BaseMagic
 
     protected override GameObject FindEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");//所有怪物列表
+        List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
         foreach (GameObject enemy in enemies)//搜索最近的
         {

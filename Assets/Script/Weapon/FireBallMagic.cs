@@ -28,7 +28,7 @@ public class FireBallMagic : BaseMagic
         //第一等级索敌
         //TODO
         //第二等级索敌
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");//所有怪物列表
+        List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
         foreach (GameObject enemy in enemies)//搜索最近的
         {

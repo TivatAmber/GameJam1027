@@ -22,7 +22,7 @@ public class TearsMagic : BaseMagic
 
     protected override GameObject FindEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
         if (enemies.Length > 0)
         {
