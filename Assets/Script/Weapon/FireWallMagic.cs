@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallMagic : BaseMagic
+public class FireWallMagic : BaseMagic
 {
     private GameObject nearestEnemy;
     private float nearestDistance = Mathf.Infinity;
@@ -15,24 +15,16 @@ public class FireBallMagic : BaseMagic
     // Update is called once per frame
     void Update()
     {
-        if (timer > cooldown)
+        if (timer > colldown)
         {
             timer = 0;
             Fire();
         }
         timer += Time.deltaTime;
     }
-    
-    protected override GameObject FindEnemy()//搜索自身范围中的敌人
+
     protected override GameObject FindEnemy()
     {
-<<<<<<<< HEAD:Assets/Script/Weapon/FireBallMagic.cs
-        GameObject target = null;
-        float dist = range;
-        foreach(GameObject enemy in EnemyManager.Instance.enemys)
-        //第一等级索敌
-        //TODO
-        //第二等级索敌
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");//所有怪物列表
 
         foreach (GameObject enemy in enemies)//搜索最近的
@@ -45,18 +37,17 @@ public class FireBallMagic : BaseMagic
             }
         }
         return nearestEnemy;
-        
-        return null;
->>>>>>>> ce203417edd53a4d682ef788cfbddd51b6a7b521:Assets/Script/Weapon/HeatMagic.cs
+
     }
-    protected override void Fire()//对所有敌人
+    protected override void Fire()//矩形的aoe
     {
         GameObject target = FindEnemy();
         if (target != null)
         {
             Vector3 forward = target.transform.position - gameObject.transform.position;
             forward.Normalize();
-            FireBall bullet = ObjectPool.Instance.GetFireBall();
+            GameObject obj = ObjectPool.Instance.GetFireBall();
+            FireBall bullet = obj.GetComponent<FireBall>();
             bullet.Speed = speed * forward;
             bullet.Damage = damage;
             bullet.transform.position = gameObject.transform.position;
