@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public abstract class BaseEnemy : MonoBehaviour
 {
+    [SerializeField] float maxSpeed;
+    [SerializeField] float attackCooldown;
     [SerializeField] int maxHealth;
-    [SerializeField] int health;
-    private void Start()
+    [SerializeField] int damage;
+    int health = 0;
+    float timer = 0f;
+    Vector3 speed = Vector3.zero;
+    protected void Start()
     {
         health = maxHealth;
     }
@@ -18,7 +23,7 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    private void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

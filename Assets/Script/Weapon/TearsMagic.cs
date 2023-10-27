@@ -24,7 +24,7 @@ public class TearsMagic : BaseMagic
     {
         List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
-        if (enemies.Length > 0)
+        if (enemies.Count > 0)
         {
             // 矩形视野范围的宽度和高度
             float visionWidth = 10f;
@@ -64,7 +64,9 @@ public class TearsMagic : BaseMagic
         GameObject target = FindEnemy();
         if (target != null)
         {
-            //TODO
+            Vector3 forward = ToolFunc.GetForward(gameObject, target);
+            FireWall bullet = ObjectPool.Instance.GetFireWall();
+            bullet.setBullet(speed * forward, transform.position, damage, range);
         }
     }
     protected override void Upgrade()

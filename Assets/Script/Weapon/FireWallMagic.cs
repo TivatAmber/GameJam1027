@@ -44,7 +44,9 @@ public class FireWallMagic : BaseMagic
         GameObject target = FindEnemy();
         if (target != null)
         {
-            // TODO
+            Vector3 forward = ToolFunc.GetForward(gameObject, target);
+            FireWall bullet = ObjectPool.Instance.GetFireWall();
+            bullet.setBullet(speed * forward, transform.position, damage, range);
         }
     }
     void LateUpdate()

@@ -25,9 +25,6 @@ public class FireBallMagic : BaseMagic
     
     protected override GameObject FindEnemy()//搜索自身范围中的敌人
     {
-        //第一等级索敌
-        //TODO
-        //第二等级索敌
         List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
         foreach (GameObject enemy in enemies)//搜索最近的
@@ -46,12 +43,9 @@ public class FireBallMagic : BaseMagic
         GameObject target = FindEnemy();
         if (target != null)
         {
-            Vector3 forward = target.transform.position - gameObject.transform.position;
-            forward.Normalize();
+            Vector3 forward = ToolFunc.GetForward(gameObject, target);
             FireBall bullet = ObjectPool.Instance.GetFireBall();
-            bullet.Speed = speed * forward;
-            bullet.Damage = damage;
-            bullet.transform.position = gameObject.transform.position;
+            bullet.setBullet(speed * forward, transform.position, damage, range);
         }
     }
     void LateUpdate()

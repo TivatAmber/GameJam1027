@@ -184,7 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
-  fireball: {fileID: 9112122593150808308, guid: c43fa2b9cbed4774ea4864ab50c13496, type: 3}
+  fireBall: {fileID: 9112122593150808308, guid: c43fa2b9cbed4774ea4864ab50c13496, type: 3}
+  fireWall: {fileID: 0}
+  tear: {fileID: 0}
+  papawu: {fileID: 0}
+  pumpkin: {fileID: 0}
 --- !u!1 &585971441
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +423,7 @@ Transform:
   m_GameObject: {fileID: 1072721147}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.751, y: 0.196, z: 0}
+  m_LocalPosition: {x: 2.242, y: 0.233, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
