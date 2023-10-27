@@ -6,18 +6,18 @@ using UnityEngine;
 public class ObjectPool : Singleton<ObjectPool>
 {
     #region Bullet
-    GameObject fireball;
-    List<GameObject> fireBalls = new List<GameObject>();
-    public GameObject GetFireBall()
+    [SerializeField] FireBall fireball;
+    List<FireBall> fireBalls = new List<FireBall>();
+    public FireBall GetFireBall()
     {
-        GameObject ret = fireBalls.Count > 0 ? ret = fireBalls[0] : Instantiate(fireball);
-        ret.SetActive(true);
+        FireBall ret = fireBalls.Count > 0 ? ret = fireBalls[0] : Instantiate(fireball);
+        ret.gameObject.SetActive(true);
         return ret;
     }
-    public void DestoryFireBall(GameObject obj)
+    public void DestoryFireBall(FireBall obj)
     {
         fireBalls.Add(obj);
-        obj.SetActive(false);
+        obj.gameObject.SetActive(false);
     }
     #endregion
 

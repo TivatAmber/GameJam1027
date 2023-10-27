@@ -22,9 +22,9 @@ public class FireBall : MonoBehaviour
             damage = value;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject target = collision.collider.gameObject;
+        GameObject target = collision.gameObject;
         TestCollsion(target);
     }
     void TestCollsion(GameObject target)
@@ -35,6 +35,7 @@ public class FireBall : MonoBehaviour
             if (targetHealth != null)
             {
                 targetHealth.ChangeHealth(damage);
+                ObjectPool.Instance.DestoryFireBall(this);
             }
         }
     }

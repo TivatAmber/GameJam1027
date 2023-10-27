@@ -13,7 +13,7 @@ public class FireBallMagic : BaseMagic
     // Update is called once per frame
     void Update()
     {
-        if (timer > colldown)
+        if (timer > cooldown)
         {
             timer = 0;
             Fire();
@@ -22,7 +22,18 @@ public class FireBallMagic : BaseMagic
     }
     protected override GameObject FindEnemy()
     {
-        return null;
+        GameObject target = null;
+        float dist = range;
+        foreach(GameObject enemy in EnemyManager.Instance.enemys)
+        {
+            if (enemy == null) continue;
+            float tmp = ToolFunc.Dist(enemy.transform.position, gameObject.transform.position);
+            if (tmp < dist) {
+                dist = tmp;
+                target = enemy;
+            }
+        }
+        return target;
     }
     protected override void Fire()
     {
@@ -31,8 +42,7 @@ public class FireBallMagic : BaseMagic
         {
             Vector3 forward = target.transform.position - gameObject.transform.position;
             forward.Normalize();
-            GameObject obj = ObjectPool.Instance.GetFireBall();
-            FireBall bullet = obj.GetComponent<FireBall>();
+            FireBall bullet = ObjectPool.Instance.GetFireBall();
             bullet.Speed = speed * forward;
             bullet.Damage = damage;
             bullet.transform.position = gameObject.transform.position;
