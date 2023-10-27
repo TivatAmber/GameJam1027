@@ -35,6 +35,7 @@ public class FireBallMagic : BaseMagic
             FireBall bullet = obj.GetComponent<FireBall>();
             bullet.Speed = speed * forward;
             bullet.Damage = damage;
+            bullet.transform.position = gameObject.transform.position;
         }
     }
     protected override void Upgrade()
