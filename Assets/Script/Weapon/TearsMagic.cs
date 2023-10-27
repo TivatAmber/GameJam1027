@@ -12,7 +12,7 @@ public class TearsMagic : BaseMagic
     // Update is called once per frame
     void Update()
     {
-        if (timer > colldown)
+        if (timer > cooldown)
         {
             timer = 0;
             Fire();

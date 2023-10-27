@@ -16,8 +16,4 @@ public abstract class BaseMagic : MonoBehaviour
     protected virtual GameObject FindEnemy() { 
         throw new Exception("Don't have FindEnemy Method");
     }
-    public virtual void Update()
-    {
-        
-    }
 }

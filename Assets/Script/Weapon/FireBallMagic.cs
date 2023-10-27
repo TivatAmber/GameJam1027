@@ -24,12 +24,7 @@ public class FireBallMagic : BaseMagic
     }
     
     protected override GameObject FindEnemy()//搜索自身范围中的敌人
-    protected override GameObject FindEnemy()
     {
-<<<<<<<< HEAD:Assets/Script/Weapon/FireBallMagic.cs
-        GameObject target = null;
-        float dist = range;
-        foreach(GameObject enemy in EnemyManager.Instance.enemys)
         //第一等级索敌
         //TODO
         //第二等级索敌
@@ -45,11 +40,8 @@ public class FireBallMagic : BaseMagic
             }
         }
         return nearestEnemy;
-        
-        return null;
->>>>>>>> ce203417edd53a4d682ef788cfbddd51b6a7b521:Assets/Script/Weapon/HeatMagic.cs
     }
-    protected override void Fire()//对所有敌人
+    protected override void Fire()
     {
         GameObject target = FindEnemy();
         if (target != null)
