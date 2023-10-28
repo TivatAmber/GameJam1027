@@ -7,7 +7,7 @@ public class FireWall : BaseBullet
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject target = collision.gameObject;
-        
+        TestCollsion(target);
     }
     void TestCollsion(GameObject target)
     {
