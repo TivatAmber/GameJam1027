@@ -25,7 +25,7 @@ public class FireBallMagic : BaseMagic
     
     protected override BaseEnemy FindEnemy()//搜索自身范围中的敌人
     {
-        List<BaseEnemy> enemies = EneityManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EntityManager.Instance.enemys;//所有怪物列表
 
         foreach (BaseEnemy enemy in enemies)//搜索最近的
         {

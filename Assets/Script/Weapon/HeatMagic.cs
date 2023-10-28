@@ -29,7 +29,7 @@ public class HeatMagic : BaseMagic
     {
         List<BaseEnemy> enemys = new List<BaseEnemy> ();
 
-        foreach (BaseEnemy enemy in EnemyManager.Instance.enemys)
+        foreach (BaseEnemy enemy in EntityManager.Instance.enemys)
         {
             BaseEnemy enemyHealth = enemy.GetComponent<BaseEnemy>();
             if (ToolFunc.Dist(enemy.transform.position, transform.position) < range && enemyHealth != null)

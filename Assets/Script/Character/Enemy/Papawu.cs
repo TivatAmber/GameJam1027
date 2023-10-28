@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Papawu : BaseEnemy
@@ -28,6 +29,8 @@ public class Papawu : BaseEnemy
     }
     protected override void Move()
     {
-
+        Vector3 forward = ToolFunc.GetForward(gameObject, EntityManager.Instance.player.gameObject);
+        speed = forward * maxSpeed;
+        transform.position += speed * Time.deltaTime;
     }
 }
