@@ -11,10 +11,9 @@ public class FireWall : BaseBullet
     }
     void TestCollsion(GameObject target)
     {
-        if (target != null && target.tag == "Enemy")
+        if (target != null && target.CompareTag("Enemy"))
         {
-            BaseEnemy targetHealth = target.GetComponent<BaseEnemy>();
-            if (targetHealth != null)
+            if (target.TryGetComponent<BaseEnemy>(out var targetHealth))
             {
                 targetHealth.ChangeHealth(damage);
             }
@@ -23,5 +22,9 @@ public class FireWall : BaseBullet
     private void Update()
     {
         transform.position += speed;
+        if ((transform.position - originPosition).magnitude > range)
+        {
+            ObjectPool.Instance.DestroyBullet(this);
+        }
     }
 }

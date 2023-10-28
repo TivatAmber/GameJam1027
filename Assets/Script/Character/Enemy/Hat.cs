@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Hat : BaseEnemy
 {
+    new private void Start()
+    {
+        base.Start();
+        timer = attackCooldown;
+    }
     private void Update()
     {
+        Move();
         if (timer < attackCooldown)
         {
             timer += Time.deltaTime;
@@ -16,7 +22,7 @@ public class Hat : BaseEnemy
         GameObject target = collision.gameObject;
         TestCollsion(target);
     }
-    void TestCollsion(GameObject target)
+    private void TestCollsion(GameObject target)
     {
         if (target != null && target.tag == "Player")
         {
@@ -27,5 +33,16 @@ public class Hat : BaseEnemy
                 timer = 0;
             }
         }
+    }
+    protected override void Move()
+    {
+        Vector3 forward = ToolFunc.GetForward(gameObject, EntityManager.Instance.player.gameObject);
+        speed = forward * maxSpeed;
+        transform.position += speed * Time.deltaTime;
+    }
+    public void Init()
+    {
+        health = maxHealth;
+        timer = attackCooldown;
     }
 }

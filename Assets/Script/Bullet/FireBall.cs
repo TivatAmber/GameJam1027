@@ -13,13 +13,12 @@ public class FireBall : BaseBullet
     }
     void TestCollsion(GameObject target)
     {
-        if (target != null && target.tag == "Enemy")
+        if (target != null && target.CompareTag("Enemy"))
         {
-            BaseEnemy targetHealth = target.GetComponent<BaseEnemy>();
-            if (targetHealth != null)
+            if (target.TryGetComponent<BaseEnemy>(out var targetHealth))
             {
                 targetHealth.ChangeHealth(damage);
-                ObjectPool.Instance.DestoryFireBall(this);
+                ObjectPool.Instance.DestroyBullet(this);
             }
         }
     }
@@ -29,7 +28,7 @@ public class FireBall : BaseBullet
         transform.position += speed;
         if ((transform.position - originPosition).magnitude > range)
         {
-            ObjectPool.Instance.DestoryFireBall(this);
+            ObjectPool.Instance.DestroyBullet(this);
         }
     }
 }

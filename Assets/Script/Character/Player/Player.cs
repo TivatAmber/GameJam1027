@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Player : BaseEntity
 {
+    public Vector3 forward;
     private void Update()
     {
         ChangeSpeed();
         ChangePosition();
+        if (Order.getSkill) GetSkill();
     }
     void ChangePosition()
     {
@@ -40,7 +42,30 @@ public class Player : BaseEntity
             speed += Vector3.right;
         }
 
-        speed.Normalize();
-        speed *= maxSpeed;
+        forward = speed.normalized;
+        speed = maxSpeed * forward;
+    }
+    void GetSkill()
+    {
+        BaseSkill skill = FindNearestSkill();
+        if (skill != null)
+        {
+            skill.Influence();
+        }
+    }
+    BaseSkill FindNearestSkill()
+    {
+        float dist = 0f;
+        BaseSkill ret = null;
+        foreach (BaseSkill skill in EntityManager.Instance.skills)
+        {
+            float nowDist = ToolFunc.Dist(gameObject.transform.position, skill.gameObject.transform.position);
+            if (ret == null || dist > nowDist)
+            {
+                ret = skill;
+                dist = nowDist;
+            }
+        }
+        return ret;
     }
 }

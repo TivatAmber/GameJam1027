@@ -20,7 +20,7 @@ public abstract class BaseEntity : MonoBehaviour
     public void ChangeHealth(int delta)
     {
         health -= delta;
-        if (health < 0)
+        if (health <= 0)
         {
             Die();
         }
