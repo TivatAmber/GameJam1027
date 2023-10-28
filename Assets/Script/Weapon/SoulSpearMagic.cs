@@ -23,11 +23,12 @@ public class SoulSpearMagic : BaseMagic
     }
     protected override void Fire()
     {
-        Vector3 forward = Vector3.zero;
+        Vector3 forward = Vector3.right * range;
         if (EntityManager.Instance.player.forward.magnitude > 0)
         {
             forward = EntityManager.Instance.player.forward * range;
         }
+        forward = new Vector3(forward.x, 0, 0);
         SoulSpear soulSpear = ObjectPool.Instance.GetSoulSpear();
         soulSpear.setBullet(transform.position + forward, damage);
     }

@@ -8,7 +8,11 @@ public class ObjectPool : Singleton<ObjectPool>
     #region Bullet
     public void DestroyBullet(BaseBullet bullet)
     {
-        if (bullet == null) throw new Exception("No Bullet But Destroy");
+        if (bullet == null)
+        {
+            Debug.LogWarning("No Bullet But Destroy");
+            return;
+        }
         switch (bullet)
         {
             case FireBall:
@@ -21,6 +25,7 @@ public class ObjectPool : Singleton<ObjectPool>
                 DestroySoulSpear(bullet as SoulSpear); break;
         }
     }
+    [Header("Bullet")]
     #region FireBall
     [SerializeField] FireBall fireBall;
     List<FireBall> fireBalls = new List<FireBall>();
@@ -121,7 +126,11 @@ public class ObjectPool : Singleton<ObjectPool>
     #region Enemys
     public void DestroyEnemy(BaseEnemy enemy)
     {
-        if (enemy == null) throw new Exception("No Enemy But Destroy");
+        if (enemy == null)
+        {
+            Debug.LogWarning("No Enemy But Destroy");
+            return;
+        }
         switch (enemy)
         {
             case Papawu:
@@ -132,6 +141,7 @@ public class ObjectPool : Singleton<ObjectPool>
                 DestroyHat(enemy as Hat); break;
         }
     }
+    [Header("Enemys")]
     #region Papawu
     [SerializeField] Papawu papawu;
     List<Papawu> papawus = new List<Papawu>();
@@ -204,5 +214,122 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
     }
     #endregion
+    #endregion
+    #region Skills
+    public void DestroySkill(BaseSkill skill)
+    {
+        if (skill == null)
+        {
+            Debug.LogWarning("No Enemy But Destroy");
+            return;
+        }
+        switch (skill)
+        {
+            case DashSkill:
+                DestroyDashSkill(skill as DashSkill); break;
+            case HealSkill:
+                DestroyHealSkill(skill as HealSkill); break;
+            case TheWallSkill:
+                DestroyTheWallSkill(skill as TheWallSkill); break;
+        }
+    }
+    [Header("Skills")]
+    #region DashSkill
+    [SerializeField] DashSkill dashSkill;
+    List<DashSkill> dashSkills = new List<DashSkill>();
+    public DashSkill GetDashSkill()
+    {
+        DashSkill ret;
+        if (dashSkills.Count > 0)
+        {
+            ret = dashSkills[0];
+            dashSkills.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(dashSkill);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    private void DestroyDashSkill(DashSkill obj)
+    {
+        dashSkills.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
+    #region HealSkill
+    [SerializeField] HealSkill healSkill;
+    List<HealSkill> healSkills = new List<HealSkill>();
+    public HealSkill GetHealSkill()
+    {
+        HealSkill ret;
+        if (healSkills.Count > 0)
+        {
+            ret = healSkills[0];
+            healSkills.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(healSkill);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    private void DestroyHealSkill(HealSkill obj)
+    {
+        healSkills.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
+    #region TheWallSkill
+    [SerializeField] TheWallSkill theWallSkill;
+    List<TheWallSkill> theWallSkills = new List<TheWallSkill>();
+    public TheWallSkill GetTheWallSkill()
+    {
+        TheWallSkill ret;
+        if (theWallSkills.Count > 0)
+        {
+            ret = theWallSkills[0];
+            theWallSkills.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(theWallSkill);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    private void DestroyTheWallSkill(TheWallSkill obj)
+    {
+        theWallSkills.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
+    #endregion
+    #region Other
+    [Header("Other")]
+    [SerializeField] HealBall healBall;
+    List<HealBall> healBalls = new List<HealBall>();
+    public HealBall GetHealBall()
+    {
+        HealBall ret;
+        if (healBalls.Count > 0)
+        {
+            ret = healBalls[0];
+            healBalls.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(healBall);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    public void DestroyHealBall(HealBall obj)
+    {
+        healBalls.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
     #endregion
 }

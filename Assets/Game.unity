@@ -360,6 +360,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 1072721153}
   player: {fileID: 1778362940}
+  skills:
+  - {fileID: 0}
 --- !u!4 &301375579
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +397,10 @@ MonoBehaviour:
   papawu: {fileID: 0}
   pumpkin: {fileID: 0}
   hat: {fileID: 0}
+  dashSkill: {fileID: 5673352194885828895, guid: 8bb4254c2e5256643978005139656691, type: 3}
+  healSkill: {fileID: 0}
+  theWallSkill: {fileID: 0}
+  healBall: {fileID: 0}
 --- !u!114 &301375581
 MonoBehaviour:
   m_ObjectHideFlags: 0
