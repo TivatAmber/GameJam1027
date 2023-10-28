@@ -144,7 +144,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     [Header("Enemys")]
     #region Papawu
-    [SerializeField] Papawu papawu;
+    public Papawu papawu;
     List<Papawu> papawus = new List<Papawu>();
     public Papawu GetPapawu()
     {
@@ -168,7 +168,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     #endregion
     #region Pumpkin
-    [SerializeField] Pumpkin pumpkin;
+    public Pumpkin pumpkin;
     List<Pumpkin> pumpkins = new List<Pumpkin>();
     public Pumpkin GetPumpkin()
     {
@@ -192,7 +192,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     #endregion
     #region Hat
-    [SerializeField] Hat hat;
+    public Hat hat;
     List<Hat> hats = new List<Hat>();
     public Hat GetHat()
     {
