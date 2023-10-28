@@ -27,6 +27,11 @@ public class Boss : BaseEnemy
     private Vector3 chargeDirection;
     Player player;
 
+    new private void Start()
+    {
+        base.Start();
+        timer = attackCooldown;
+    }
     private void Awake()
     {
         base.Start();
@@ -38,6 +43,10 @@ public class Boss : BaseEnemy
 
     private void Update()
     {
+        if (timer < attackCooldown)
+        {
+            timer += Time.deltaTime;
+        }
         if (isStop)
         {
             time += Time.deltaTime;
@@ -68,6 +77,28 @@ public class Boss : BaseEnemy
         {
             time = 0;
             isStop = false;
+        }
+    }
+    public void Init()
+    {
+        health = maxHealth;
+        timer = attackCooldown;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        GameObject target = collision.gameObject;
+        TestCollsion(target);
+    }
+    void TestCollsion(GameObject target)
+    {
+        if (target != null && target.tag == "Player")
+        {
+            Player player = target.GetComponent<Player>();
+            if (player != null && timer >= attackCooldown)
+            {
+                player.ChangeHealth(damage);
+                timer = 0;
+            }
         }
     }
     protected override void Move()
