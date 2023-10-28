@@ -91,6 +91,7 @@ public class Boss : BaseEnemy
     }
     void TestCollsion(GameObject target)
     {
+        Debug.Log("success");
         if (target != null && target.tag == "Player")
         {
             Player player = target.GetComponent<Player>();
@@ -99,6 +100,10 @@ public class Boss : BaseEnemy
                 player.ChangeHealth(damage);
                 timer = 0;
             }
+        }
+        if (target != null && target.tag == "Enemy")
+        {
+            Destroy(target);
         }
     }
     protected override void Move()

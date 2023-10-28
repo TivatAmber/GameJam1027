@@ -40,6 +40,7 @@ public class Pumpkin : BaseEnemy
             {
                 player.ChangeHealth(damage);
                 timer = 0;
+                Die();
             }
         }
     }
@@ -73,6 +74,7 @@ public class Pumpkin : BaseEnemy
         
         if (Vector3.Distance(center, player.transform.position) < boomR)
         {
+            Debug.Log("Boom!!!");
             player.ChangeHealth(boomDemage);
         }
         // TODO: 根据自己的需求实现具体逻辑

@@ -8,6 +8,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] List<BaseMagic> magics = new List<BaseMagic>();
     private void Start()
     {
+
     }
     public void AddMagic(BaseMagic magic)
     {
