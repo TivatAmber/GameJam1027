@@ -21,4 +21,14 @@ public abstract class BaseEnemy : BaseEntity
         //ObjectPool.Instance.DestroyEnemy(this);
         EntityManager.Instance.RemoveEnemy(this);
     }
-}
+    public void AddMaxHealth(int delta)
+    {
+        maxHealth += delta;
+    }
+    public void Init(Vector3 positon)
+    {
+        health = maxHealth;
+        timer = attackCooldown;
+        transform.position = positon;
+    }
+} 

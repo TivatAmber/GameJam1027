@@ -50,11 +50,6 @@ public class Pumpkin : BaseEnemy
         speed = forward * maxSpeed;
         transform.position += speed * Time.deltaTime;
     }
-    public void Init()
-    {
-        health = maxHealth;
-        timer = attackCooldown;
-    }
     protected override void Die()
     {
         diedPosition = transform.position;
@@ -77,6 +72,5 @@ public class Pumpkin : BaseEnemy
             Debug.Log("Boom!!!");
             player.ChangeHealth(boomDemage);
         }
-        // TODO: 根据自己的需求实现具体逻辑
     }
 }

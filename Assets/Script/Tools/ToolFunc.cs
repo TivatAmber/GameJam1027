@@ -23,14 +23,22 @@ public static class ToolFunc
     {
         return Mathf.Sqrt(sqr(vec1.x - vec2.x) + sqr(vec1.y - vec2.y) + sqr(vec1.z - vec2.z));
     }
+    public static Vector3 GetForward(GameObject fir, GameObject sec)
+    {
+        return GetForward(fir.transform.position, sec.transform.position);
+    }
     /// <summary>
     /// fir to sec forward Vector
     /// </summary>
     /// <param name="fir"></param>
     /// <param name="sec"></param>
     /// <returns></returns>
-    public static Vector3 GetForward(GameObject fir, GameObject sec)
+    public static Vector3 GetForward(Vector3 fir,  Vector3 sec)
     {
-        return (sec.transform.position - fir.transform.position).normalized;
+        return (sec - fir).normalized;
+    }
+    public static float GetAngle(Vector3 fir, Vector3 sec)
+    {
+        return Mathf.Acos(Vector3.Dot(fir, sec) / sqr(fir.magnitude) / sqr(sec.magnitude)) / Mathf.PI * 180;
     }
 }

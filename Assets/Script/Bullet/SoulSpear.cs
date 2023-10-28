@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoulSpear : BaseBullet
 {
     List<BaseEnemy> enemyList = new List<BaseEnemy>();
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject target = collision.gameObject;
         TestCollision(target);
@@ -21,7 +21,10 @@ public class SoulSpear : BaseBullet
         {
             if (target.TryGetComponent<BaseEnemy>(out var enemy))
             {
-                enemyList.Add(enemy);
+                if (!enemyList.Contains(enemy))
+                {
+                    enemyList.Add(enemy);
+                }
             }
         }
     }

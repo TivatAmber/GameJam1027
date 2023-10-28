@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Player : BaseEntity
 {
+    [SerializeField] private float maxCooldown;
+    [SerializeField] private float timer;
     public Vector3 forward;
     private void Update()
     {
         ChangeSpeed();
         ChangePosition();
-        if (Order.getSkill) GetSkill();
+        if (Order.getSkill && timer > maxCooldown) GetSkill();
+        if (timer < maxCooldown) timer += Time.deltaTime;
     }
     void ChangePosition()
     {
@@ -48,10 +52,8 @@ public class Player : BaseEntity
     void GetSkill()
     {
         BaseSkill skill = FindNearestSkill();
-        if (skill != null)
-        {
-            skill.Influence();
-        }
+        if (skill != null) skill.Influence();
+        timer = 0f;
     }
     BaseSkill FindNearestSkill()
     {

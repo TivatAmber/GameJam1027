@@ -39,9 +39,4 @@ public class Papawu : BaseEnemy
         speed = forward * maxSpeed;
         transform.position += speed * Time.deltaTime;
     }
-    public void Init()
-    {
-        health = maxHealth;
-        timer = attackCooldown;
-    }
 }

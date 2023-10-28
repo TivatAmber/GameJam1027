@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectPool : Singleton<ObjectPool>
 {
+    // ʯɽ
     #region Bullet
     public void DestroyBullet(BaseBullet bullet)
     {
@@ -143,7 +144,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     [Header("Enemys")]
     #region Papawu
-    [SerializeField] Papawu papawu;
+    public Papawu papawu;
     List<Papawu> papawus = new List<Papawu>();
     public Papawu GetPapawu()
     {
@@ -167,7 +168,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     #endregion
     #region Pumpkin
-    [SerializeField] Pumpkin pumpkin;
+    public Pumpkin pumpkin;
     List<Pumpkin> pumpkins = new List<Pumpkin>();
     public Pumpkin GetPumpkin()
     {
@@ -191,7 +192,7 @@ public class ObjectPool : Singleton<ObjectPool>
     }
     #endregion
     #region Hat
-    [SerializeField] Hat hat;
+    public Hat hat;
     List<Hat> hats = new List<Hat>();
     public Hat GetHat()
     {
@@ -231,6 +232,8 @@ public class ObjectPool : Singleton<ObjectPool>
                 DestroyHealSkill(skill as HealSkill); break;
             case TheWallSkill:
                 DestroyTheWallSkill(skill as TheWallSkill); break;
+            case HugeSoulSpearSkill:
+                DestroyHugeSoulSpearSkill(skill as HugeSoulSpearSkill); break;
         }
     }
     [Header("Skills")]
@@ -306,6 +309,30 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
     }
     #endregion
+    #region HugeSoulSpearSkill
+    [SerializeField] HugeSoulSpearSkill hugeSoulSpearSkill;
+    List<HugeSoulSpearSkill> hugeSoulSpearSkills = new List<HugeSoulSpearSkill>();
+    public HugeSoulSpearSkill GetHugeSoulSpearSkill()
+    {
+        HugeSoulSpearSkill ret;
+        if (hugeSoulSpearSkills.Count > 0)
+        {
+            ret = hugeSoulSpearSkills[0];
+            hugeSoulSpearSkills.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(hugeSoulSpearSkill);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    private void DestroyHugeSoulSpearSkill(HugeSoulSpearSkill obj)
+    {
+        hugeSoulSpearSkills.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
     #endregion
     #region Other
     [Header("Other")]
@@ -333,7 +360,7 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
     }
     #endregion
-    #region
+    #region HealTower
     [SerializeField] HealTower healTower;
     List<HealTower> healTowers = new List<HealTower>();
     public HealTower GetHealTower()
@@ -354,6 +381,30 @@ public class ObjectPool : Singleton<ObjectPool>
     public void DestroyHealTower(HealTower obj) 
     { 
         healTowers.Remove(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
+    #region
+    [SerializeField] HugeSoulSpear hugeSoulSpear;
+    List<HugeSoulSpear> hugeSoulSpears = new List<HugeSoulSpear>();
+    public HugeSoulSpear GetHugeSoulSpear()
+    {
+        HugeSoulSpear ret;
+        if (hugeSoulSpears.Count > 0)
+        {
+            ret = hugeSoulSpears[0];
+            hugeSoulSpears.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(hugeSoulSpear);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    public void DestroyHugeSoulSpear(HugeSoulSpear obj)
+    {
+        hugeSoulSpears.Remove(obj);
         obj.gameObject.SetActive(false);
     }
     #endregion
