@@ -28,6 +28,6 @@ public class Papawu : BaseEnemy
     }
     protected override void Move()
     {
-        
+
     }
 }

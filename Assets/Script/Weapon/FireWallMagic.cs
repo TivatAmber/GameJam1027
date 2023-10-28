@@ -25,7 +25,7 @@ public class FireWallMagic : BaseMagic
 
     protected override BaseEnemy FindEnemy()
     {
-        List<BaseEnemy> enemies = EnemyManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EneityManager.Instance.enemys;//所有怪物列表
 
         foreach (BaseEnemy enemy in enemies)//搜索最近的
         {
