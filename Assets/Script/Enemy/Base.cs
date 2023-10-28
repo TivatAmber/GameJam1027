@@ -11,9 +11,10 @@ public abstract class BaseEnemy : MonoBehaviour
     int health = 0;
     float timer = 0f;
     Vector3 speed = Vector3.zero;
-    protected void Start()
+    protected void  Start()
     {
         health = maxHealth;
+        
     }
     public void ChangeHealth(int delta)
     {
