@@ -13,7 +13,7 @@ public abstract class BaseMagic : MonoBehaviour
     protected float timer;
     protected virtual void Fire() { }
     protected virtual void Upgrade() { }
-    protected virtual GameObject FindEnemy() { 
+    protected virtual BaseEnemy FindEnemy() { 
         throw new Exception("Don't have FindEnemy Method");
     }
 }

@@ -20,9 +20,9 @@ public class TearsMagic : BaseMagic
         timer += Time.deltaTime;
     }
 
-    protected override GameObject FindEnemy()
+    protected override BaseEnemy FindEnemy()
     {
-        List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
         if (enemies.Count > 0)
         {
@@ -34,8 +34,8 @@ public class TearsMagic : BaseMagic
             Vector3 playerPosition = transform.position;
 
             // 过滤出在玩家视野范围内的敌人
-            List<GameObject> enemiesInVision = new List<GameObject>();
-            foreach (GameObject enemy in enemies)
+            List<BaseEnemy> enemiesInVision = new List<BaseEnemy>();
+            foreach (BaseEnemy enemy in enemies)
             {
                 Vector3 enemyPosition = enemy.transform.position;
                 Vector3 enemyDirection = enemyPosition - playerPosition;
@@ -61,10 +61,10 @@ public class TearsMagic : BaseMagic
     }
     protected override void Fire()//陨石攻击的逻辑和火球并不同我没有改
     {
-        GameObject target = FindEnemy();
+        BaseEnemy target = FindEnemy();
         if (target != null)
         {
-            Vector3 forward = ToolFunc.GetForward(gameObject, target);
+            Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
             FireWall bullet = ObjectPool.Instance.GetFireWall();
             bullet.setBullet(speed * forward, transform.position, damage, range);
         }

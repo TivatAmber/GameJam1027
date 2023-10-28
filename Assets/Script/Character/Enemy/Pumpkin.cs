@@ -11,7 +11,7 @@ public class Pumpkin : BaseEnemy
             timer += Time.deltaTime;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         GameObject target = collision.gameObject;
         TestCollsion(target);

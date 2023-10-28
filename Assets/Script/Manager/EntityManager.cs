@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    public List<GameObject> enemys = new List<GameObject>();
-    #region 
+    #region Enemys
+    public List<BaseEnemy> enemys = new List<BaseEnemy>();
+
+    #endregion
+    #region Player
+    public Player player;
     #endregion
 }

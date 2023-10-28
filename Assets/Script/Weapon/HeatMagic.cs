@@ -21,14 +21,15 @@ public class HeatMagic : BaseMagic
         timer += Time.deltaTime;
     }
 
-    protected override GameObject FindEnemy()//搜索自身范围中的敌人
+    protected override BaseEnemy FindEnemy()//搜索自身范围中的敌人
     {
         return null;
     }
     protected override void Fire()//对所有敌人
     {
-        List<GameObject> enemys = new List<GameObject> ();
-        foreach (GameObject enemy in EnemyManager.Instance.enemys)
+        List<BaseEnemy> enemys = new List<BaseEnemy> ();
+
+        foreach (BaseEnemy enemy in EnemyManager.Instance.enemys)
         {
             BaseEnemy enemyHealth = enemy.GetComponent<BaseEnemy>();
             if (ToolFunc.Dist(enemy.transform.position, transform.position) < range && enemyHealth != null)

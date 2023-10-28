@@ -7,12 +7,7 @@ public abstract class BaseEnemy : BaseEntity
 {
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected int damage;
-    protected float timer = 0f;
-
-    protected virtual void Attack()
-    {
-        throw new Exception("Can't Attack");
-    }
+    [SerializeField] protected float timer = 0f;
     protected virtual void Move()
     {
         throw new Exception("Can't Move");

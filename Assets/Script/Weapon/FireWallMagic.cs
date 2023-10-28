@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireWallMagic : BaseMagic
 {
-    private GameObject nearestEnemy;
+    private BaseEnemy nearestEnemy;
     private float nearestDistance = Mathf.Infinity;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +23,11 @@ public class FireWallMagic : BaseMagic
         timer += Time.deltaTime;
     }
 
-    protected override GameObject FindEnemy()
+    protected override BaseEnemy FindEnemy()
     {
-        List<GameObject> enemies = EnemyManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EnemyManager.Instance.enemys;//所有怪物列表
 
-        foreach (GameObject enemy in enemies)//搜索最近的
+        foreach (BaseEnemy enemy in enemies)//搜索最近的
         {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance < nearestDistance)
@@ -41,10 +41,10 @@ public class FireWallMagic : BaseMagic
     }
     protected override void Fire()//矩形的aoe
     {
-        GameObject target = FindEnemy();
+        BaseEnemy target = FindEnemy();
         if (target != null)
         {
-            Vector3 forward = ToolFunc.GetForward(gameObject, target);
+            Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
             FireWall bullet = ObjectPool.Instance.GetFireWall();
             bullet.setBullet(speed * forward, transform.position, damage, range);
         }
