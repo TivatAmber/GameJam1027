@@ -4,11 +4,15 @@ public class HealBall : MonoBehaviour
 {
     [SerializeField] float maxSpeed;
     private int heal;
-    private GameObject player;
+    private Player player;
+    private void Start()
+    {
+        player = EntityManager.Instance.player;
+    }
     private void Update()
     {
-        Vector3 forward = ToolFunc.GetForward(gameObject, player);
-        transform.position += forward * maxSpeed;
+        Vector3 forward = ToolFunc.GetForward(gameObject, player.gameObject);
+        transform.position += forward * maxSpeed * Time.deltaTime;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,10 +30,10 @@ public class HealBall : MonoBehaviour
             }
         }
     }
-    public void setHealBall(int heal, float maxSpeed)
+    public void setHealBall(Vector3 position, int heal, float maxSpeed)
     {
+        transform.position = position;
         this.maxSpeed = maxSpeed;
         this.heal = heal;
-        player = EntityManager.Instance.player.gameObject;
     }
 }

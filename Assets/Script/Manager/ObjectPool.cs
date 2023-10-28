@@ -309,6 +309,7 @@ public class ObjectPool : Singleton<ObjectPool>
     #endregion
     #region Other
     [Header("Other")]
+    #region HealBall
     [SerializeField] HealBall healBall;
     List<HealBall> healBalls = new List<HealBall>();
     public HealBall GetHealBall()
@@ -331,5 +332,30 @@ public class ObjectPool : Singleton<ObjectPool>
         healBalls.Add(obj);
         obj.gameObject.SetActive(false);
     }
+    #endregion
+    #region
+    [SerializeField] HealTower healTower;
+    List<HealTower> healTowers = new List<HealTower>();
+    public HealTower GetHealTower()
+    {
+        HealTower ret;
+        if (healTowers.Count > 0)
+        {
+            ret = healTowers[0];
+            healTowers.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(healTower);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    public void DestroyHealTower(HealTower obj) 
+    { 
+        healTowers.Remove(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
     #endregion
 }
