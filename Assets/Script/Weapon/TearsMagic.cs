@@ -22,7 +22,7 @@ public class TearsMagic : BaseMagic
 
     protected override BaseEnemy FindEnemy()
     {
-        List<BaseEnemy> enemies = EntityManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EntityManager.Instance.enemies;//所有怪物列表
 
         if (enemies.Count > 0)
         {
@@ -64,9 +64,8 @@ public class TearsMagic : BaseMagic
         BaseEnemy target = FindEnemy();
         if (target != null)
         {
-            Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-            FireWall bullet = ObjectPool.Instance.GetFireWall();
-            bullet.setBullet(speed * forward, transform.position, damage, range);
+            Tears bullet = ObjectPool.Instance.GetTears();
+            bullet.setBullet(target.transform.position, damage, range);
         }
     }
     protected override void Upgrade()

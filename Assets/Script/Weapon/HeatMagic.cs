@@ -27,12 +27,18 @@ public class HeatMagic : BaseMagic
     }
     protected override void Fire()//对所有敌人
     {
-        List<BaseEnemy> enemys = new List<BaseEnemy> ();
-
-        foreach (BaseEnemy enemy in EntityManager.Instance.enemys)
+        List<BaseEnemy> enemies = EntityManager.Instance.enemies;
+        List<BaseEnemy> targets = new List<BaseEnemy>();
+        foreach (BaseEnemy enemy in enemies)
         {
-            BaseEnemy enemyHealth = enemy.GetComponent<BaseEnemy>();
-            if (ToolFunc.Dist(enemy.transform.position, transform.position) < range && enemyHealth != null)
+            if (ToolFunc.Dist(transform.position, enemy.transform.position) < range)
+            {
+                targets.Add(enemy);
+            }
+        }
+        foreach (BaseEnemy enemy in targets)
+        {
+            if (enemy.TryGetComponent<BaseEnemy>(out var enemyHealth))
             {
                 enemyHealth.ChangeHealth(damage);
             }

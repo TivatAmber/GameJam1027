@@ -357,7 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
-  enemys: []
+  enemies:
+  - {fileID: 1072721153}
+  player: {fileID: 1778362940}
 --- !u!4 &301375579
 Transform:
   m_ObjectHideFlags: 0
@@ -386,11 +388,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
-  fireBall: {fileID: 0}
-  fireWall: {fileID: 0}
-  tear: {fileID: 0}
+  fireBall: {fileID: 9112122593150808308, guid: c43fa2b9cbed4774ea4864ab50c13496, type: 3}
+  fireWall: {fileID: 6695237839717040063, guid: 49077704b9d08e34d873fae40965ac8c, type: 3}
+  tear: {fileID: 6856713262510443482, guid: 650f8b86372bc854280aaa06edc047dc, type: 3}
+  soulSpear: {fileID: -5968459807060568687, guid: bd369bb3d30923b43a369aa6650196a5, type: 3}
   papawu: {fileID: 0}
   pumpkin: {fileID: 0}
+  hat: {fileID: 0}
 --- !u!114 &301375581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +408,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
+--- !u!1 &523602340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523602341}
+  - component: {fileID: 523602342}
+  m_Layer: 0
+  m_Name: SoulSpearMagic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523602341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523602340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 792572705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523602342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523602340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7c954af8965a34d9f0fb18dc858b3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  speed: 3
+  range: 3
+  cooldown: 2
 --- !u!1 &585971441
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1465587713}
+  - {fileID: 523602341}
   m_Father: {fileID: 1778362939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &792572706
@@ -727,59 +779,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1418920768a811a40a0488fcededcf04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 0.1
   maxHealth: 10
   health: 0
   attackCooldown: 3
-  damage: 2
---- !u!1 &1465587712
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1465587713}
-  - component: {fileID: 1465587714}
-  m_Layer: 0
-  m_Name: Fireball
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1465587713
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465587712}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 792572705}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465587714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465587712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b13ff07e66354284f858390f8dd19663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  range: 0
-  cooldown: 0
+  damage: 10
 --- !u!1 &1543723714
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +884,7 @@ MonoBehaviour:
   maxSpeed: 0
   maxHealth: 0
   health: 0
+  forward: {x: 0, y: 0, z: 0}
 --- !u!1 &1752723130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1019,7 @@ MonoBehaviour:
   maxSpeed: 1
   maxHealth: 10
   health: 0
+  forward: {x: 0, y: 0, z: 0}
 --- !u!61 &1778362941
 BoxCollider2D:
   m_ObjectHideFlags: 0

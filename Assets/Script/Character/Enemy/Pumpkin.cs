@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Pumpkin : BaseEnemy
 {
+    new private void Start()
+    {
+        base.Start();
+        timer = attackCooldown;
+    }
     private void Update()
     {
+        Move();
         if (timer < attackCooldown)
         {
             timer += Time.deltaTime;
@@ -27,5 +33,16 @@ public class Pumpkin : BaseEnemy
                 timer = 0;
             }
         }
+    }
+    protected override void Move()
+    {
+        Vector3 forward = ToolFunc.GetForward(gameObject, EntityManager.Instance.player.gameObject);
+        speed = forward * maxSpeed;
+        transform.position += speed * Time.deltaTime;
+    }
+    public void Init()
+    {
+        health = maxHealth;
+        timer = attackCooldown;
     }
 }

@@ -25,7 +25,7 @@ public class FireWallMagic : BaseMagic
 
     protected override BaseEnemy FindEnemy()
     {
-        List<BaseEnemy> enemies = EntityManager.Instance.enemys;//所有怪物列表
+        List<BaseEnemy> enemies = EntityManager.Instance.enemies;//所有怪物列表
 
         foreach (BaseEnemy enemy in enemies)//搜索最近的
         {
@@ -35,6 +35,10 @@ public class FireWallMagic : BaseMagic
                 nearestEnemy = enemy;
                 nearestDistance = distance;
             }
+        }
+        if (nearestEnemy != null && !nearestEnemy.gameObject.activeSelf)
+        {
+            nearestEnemy = null;
         }
         return nearestEnemy;
 

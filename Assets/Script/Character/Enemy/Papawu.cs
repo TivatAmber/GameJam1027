@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class Papawu : BaseEnemy
 {
+    new private void Start()
+    {
+        base.Start();
+        timer = attackCooldown;
+    }
     private void Update()
     {
+        Move();
         if (timer < attackCooldown)
         {
             timer += Time.deltaTime;
@@ -32,5 +38,10 @@ public class Papawu : BaseEnemy
         Vector3 forward = ToolFunc.GetForward(gameObject, EntityManager.Instance.player.gameObject);
         speed = forward * maxSpeed;
         transform.position += speed * Time.deltaTime;
+    }
+    public void Init()
+    {
+        health = maxHealth;
+        timer = attackCooldown;
     }
 }

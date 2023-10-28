@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : BaseEntity
 {
+    public Vector3 forward;
     private void Update()
     {
         ChangeSpeed();
@@ -40,7 +41,7 @@ public class Player : BaseEntity
             speed += Vector3.right;
         }
 
-        speed.Normalize();
-        speed *= maxSpeed;
+        forward = speed.normalized;
+        speed = maxSpeed * forward;
     }
 }
