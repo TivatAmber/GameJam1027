@@ -62,15 +62,18 @@ public class TearsMagic : BaseMagic
     }
     protected override IEnumerator Fire()//陨石攻击的逻辑和火球并不同我没有改
     {
-        for (int attackTime = 0; attackTime < combo; attackTime++)
+        lock (EntityManager.Instance.enemies)
         {
-            BaseEnemy target = FindEnemy();
-            if (target != null)
+            for (int attackTime = 0; attackTime < combo; attackTime++)
             {
-                Tears bullet = ObjectPool.Instance.GetTears();
-                bullet.setBullet(target.transform.position, damage, range);
+                BaseEnemy target = FindEnemy();
+                if (target != null)
+                {
+                    Tears bullet = ObjectPool.Instance.GetTears();
+                    bullet.setBullet(target.transform.position, damage, range);
+                }
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.1f);
         }
     }
     public override void UpGrade()

@@ -15,6 +15,7 @@ public class Player : BaseEntity
     private int magicNumber;
 
     [Header("Exp Setting")]
+    [SerializeField] private float getExpRange;
     [SerializeField] private int maxExp;
     [SerializeField] private int deltaMaxExp;
     [SerializeField] private int exp;
@@ -105,5 +106,9 @@ public class Player : BaseEntity
             maxExp += deltaMaxExp;
             LevelManager.Instance.LevelUp();
         }
+    }
+    public void AddGetExpRange(int delta)
+    {
+        getExpRange += delta;
     }
 }

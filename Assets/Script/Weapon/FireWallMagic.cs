@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FireWallMagic : BaseMagic
 {
@@ -27,7 +28,6 @@ public class FireWallMagic : BaseMagic
     protected override BaseEnemy FindEnemy()
     {
         List<BaseEnemy> enemies = EntityManager.Instance.enemies;//所有怪物列表
-
         foreach (BaseEnemy enemy in enemies)//搜索最近的
         {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
@@ -46,16 +46,18 @@ public class FireWallMagic : BaseMagic
     }
     protected override IEnumerator Fire()//矩形的aoe
     {
-        for (int attackTime = 0; attackTime < combo; attackTime++)
-        {
-            BaseEnemy target = FindEnemy();
-            if (target != null)
+        lock (EntityManager.Instance.enemies) {
+            for (int attackTime = 0; attackTime < combo; attackTime++)
             {
-                Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-                FireWall bullet = ObjectPool.Instance.GetFireWall();
-                bullet.setBullet(speed * forward, transform.position, damage, range);
+                BaseEnemy target = FindEnemy();
+                if (target != null)
+                {
+                    Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
+                    FireWall bullet = ObjectPool.Instance.GetFireWall();
+                    bullet.setBullet(speed * forward, transform.position, damage, range);
+                }
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.1f);
         }
     }
     void LateUpdate()

@@ -14,11 +14,18 @@ public class WeaponManager : Singleton<WeaponManager>
             m.AddCombo(delta);
         }
     }
-    public void SubAllCoolTime(int delta)
+    public void AddAllRange(int percent)
     {
         foreach (BaseMagic m in magics)
         {
-            m.SubCoolTime(delta);
+            m.AddRange(percent);
+        }
+    }
+    public void SubAllCoolTime(int percent)
+    {
+        foreach (BaseMagic m in magics)
+        {
+            m.SubCoolTime(percent);
         }
     }
 }

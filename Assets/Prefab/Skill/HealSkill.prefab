@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6286949552415724973}
   - component: {fileID: 1005656406363616897}
-  - component: {fileID: 5307796076822267853}
+  - component: {fileID: 1526122899251088809}
   m_Layer: 0
   m_Name: HealSkill
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5307796076822267853
+--- !u!114 &1526122899251088809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4250267802547039367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4da6e55f84ca14d82556ac1d7c9a3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 52754d153fdd6314bb7512f50c989b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  distance: 0
+  damage: 3
+  distance: 3
   probability: 0
-  maxSpeed: 0
+  maxSpeed: 3
