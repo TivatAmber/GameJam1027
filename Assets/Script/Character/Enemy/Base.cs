@@ -36,7 +36,7 @@ public abstract class BaseEnemy : BaseEntity
     }
     protected void FallenThings()
     {
-        timeManager = GetComponent<TimeManager>();
+        timeManager = TimeManager.Instance;
         float globalProbability = FallenProbability(timeManager.globalTime / 60);
         float randomValue1 = UnityEngine.Random.value;
         float randomValue2 = UnityEngine.Random.value;

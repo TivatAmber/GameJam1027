@@ -24,18 +24,24 @@ public class SoulSpearMagic : BaseMagic
     protected override IEnumerator Fire()
     {
         int flag = 1;
-        for (int attackTime = 0; attackTime < combo; attackTime++)
+        lock (EntityManager.Instance.enemies)
         {
-            Vector3 forward = Vector3.right * range;
-            if (EntityManager.Instance.player.forward.magnitude > 0)
+            for (int attackTime = 0; attackTime < combo; attackTime++)
             {
-                forward = EntityManager.Instance.player.forward * range;
+                Vector3 forward = Vector3.right * range;
+                if (EntityManager.Instance.player.forward.magnitude > 0)
+                {
+                    forward = EntityManager.Instance.player.forward * range;
+                }
+                forward = new Vector3(forward.x * flag, 0, 0);
+                SoulSpear soulSpear = ObjectPool.Instance.GetSoulSpear();
+                soulSpear.setBullet(transform.position + forward, damage);
+
+                soulSpear.transform.localScale = new Vector3(1, forward.x * flag, 0);
+
+                flag *= -1;
+                yield return new WaitForSeconds(0.1f);
             }
-            forward = new Vector3(forward.x * flag, 0, 0);
-            flag *= -1;
-            SoulSpear soulSpear = ObjectPool.Instance.GetSoulSpear();
-            soulSpear.setBullet(transform.position + forward, damage);
-            yield return new WaitForSeconds(0.1f);
         }
     }
     public override void UpGrade()

@@ -46,16 +46,19 @@ public class FireBallMagic : BaseMagic
     }
     protected override IEnumerator Fire()
     {
-        for (int attackTime = 0; attackTime < combo; attackTime++)
+        lock (EntityManager.Instance.enemies)
         {
-            BaseEnemy target = FindEnemy();
-            if (target != null)
+            for (int attackTime = 0; attackTime < combo; attackTime++)
             {
-                Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-                FireBall bullet = ObjectPool.Instance.GetFireBall();
-                bullet.setBullet(speed * forward, transform.position, damage, range);
+                BaseEnemy target = FindEnemy();
+                if (target != null)
+                {
+                    Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
+                    FireBall bullet = ObjectPool.Instance.GetFireBall();
+                    bullet.setBullet(speed * forward, transform.position, damage, range);
+                }
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.1f);
         }
     }
     void LateUpdate()

@@ -15,6 +15,7 @@ public abstract class BaseMagic : MonoBehaviour, IUpGrade
     protected float timer;
     public int Level { get { return level; } }
     public bool CanUpGrade { get { return maxLevel != level; } }
+    public GameObject thisGameObject { get { return gameObject; } }
     protected virtual IEnumerator Fire() { yield break; }
     protected virtual BaseEnemy FindEnemy()
     {
@@ -25,8 +26,12 @@ public abstract class BaseMagic : MonoBehaviour, IUpGrade
     {
         combo++;
     }
+    public virtual void AddRange(int percent)
+    {
+        range *= (100.0f + percent) / 100.0f;
+    }
     public virtual void SubCoolTime(int percent)
     {
-        combo *= (1 - percent);
+        cooldown *= (100.0f - percent) / 100.0f;
     }
 }

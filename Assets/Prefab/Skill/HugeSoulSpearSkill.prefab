@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182630264604814226}
   - component: {fileID: 4678583551912747505}
-  - component: {fileID: 1969388948684828115}
+  - component: {fileID: 5609837603239552038}
   m_Layer: 0
   m_Name: HugeSoulSpearSkill
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1969388948684828115
+--- !u!114 &5609837603239552038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4771151509065471944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c7c714a39cd3f4592218d8777e28cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 04ebb2c10dba1e34a99b5601ed65423c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  distance: 0
+  damage: 3
+  distance: 6
   probability: 0
-  range: 0
+  range: 6
