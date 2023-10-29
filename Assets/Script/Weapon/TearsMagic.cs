@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TearsMagic : BaseMagic
@@ -12,10 +13,10 @@ public class TearsMagic : BaseMagic
     // Update is called once per frame
     void Update()
     {
-        if (timer > cooldown)
+        if (level > 0 && timer > cooldown)
         {
             timer = 0;
-            Fire();
+            StartCoroutine(Fire());
         }
         timer += Time.deltaTime;
     }
@@ -59,17 +60,36 @@ public class TearsMagic : BaseMagic
 
         return null;
     }
-    protected override void Fire()//陨石攻击的逻辑和火球并不同我没有改
+    protected override IEnumerator Fire()//陨石攻击的逻辑和火球并不同我没有改
     {
-        BaseEnemy target = FindEnemy();
-        if (target != null)
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            Tears bullet = ObjectPool.Instance.GetTears();
-            bullet.setBullet(target.transform.position, damage, range);
+            BaseEnemy target = FindEnemy();
+            if (target != null)
+            {
+                Tears bullet = ObjectPool.Instance.GetTears();
+                bullet.setBullet(target.transform.position, damage, range);
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
-    protected override void Upgrade()
+    public override void UpGrade()
     {
-        // TODO
+        switch (level)
+        {
+            case 1:
+                combo += 1;
+                break;
+            case 2:
+                range += 1.0f;
+                break;
+            case 3:
+                combo += 3;
+                break;
+            case 4:
+                cooldown = 4;
+                break;
+        }
+        if (level < maxLevel) level++;
     }
 }

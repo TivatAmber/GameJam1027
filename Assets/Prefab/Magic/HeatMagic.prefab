@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  combo: 1
+  maxLevel: 5
   speed: 4
   range: 3
   cooldown: 1

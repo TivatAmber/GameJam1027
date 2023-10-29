@@ -10,10 +10,10 @@ public class SoulSpearMagic : BaseMagic
     }
     private void Update()
     {
-        if (timer > cooldown)
+        if (level > 0 && timer > cooldown)
         {
             timer = 0;
-            Fire();
+            StartCoroutine(Fire());
         }
         timer += Time.deltaTime;
     }
@@ -21,19 +21,40 @@ public class SoulSpearMagic : BaseMagic
     {
         return null;
     }
-    protected override void Fire()
+    protected override IEnumerator Fire()
     {
-        Vector3 forward = Vector3.right * range;
-        if (EntityManager.Instance.player.forward.magnitude > 0)
+        int flag = 1;
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            forward = EntityManager.Instance.player.forward * range;
+            Vector3 forward = Vector3.right * range;
+            if (EntityManager.Instance.player.forward.magnitude > 0)
+            {
+                forward = EntityManager.Instance.player.forward * range;
+            }
+            forward = new Vector3(forward.x * flag, 0, 0);
+            flag *= -1;
+            SoulSpear soulSpear = ObjectPool.Instance.GetSoulSpear();
+            soulSpear.setBullet(transform.position + forward, damage);
+            yield return new WaitForSeconds(0.1f);
         }
-        forward = new Vector3(forward.x, 0, 0);
-        SoulSpear soulSpear = ObjectPool.Instance.GetSoulSpear();
-        soulSpear.setBullet(transform.position + forward, damage);
     }
-    protected override void Upgrade()
+    public override void UpGrade()
     {
-        // TODO
+        switch (level)
+        {
+            case 1:
+                combo++;
+                break;
+            case 2:
+                damage = 3;
+                break;
+            case 3:
+                combo++;
+                break;
+            case 4:
+                damage = 4;
+                break;
+        }
+        if (level < maxLevel) level++;
     }
 }

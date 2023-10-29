@@ -19,7 +19,7 @@ public abstract class BaseEnemy : BaseEntity
     }
     protected override void Die()
     {
-        //ObjectPool.Instance.DestroyEnemy(this);
+        ObjectPool.Instance.DestroyEnemy(this);
         EntityManager.Instance.RemoveEnemy(this);
     }
     public void AddMaxHealth(int delta)

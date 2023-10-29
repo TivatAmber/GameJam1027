@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : Singleton<WeaponManager>
 {
     [SerializeField] List<BaseMagic> magics = new List<BaseMagic>();
-    private void Start()
-    {
 
-    }
-    public void AddMagic(BaseMagic magic)
+    public void AddAllCombo(int delta)
     {
-        magics.Add(magic);
+        foreach (BaseMagic m in magics)
+        {
+            m.AddCombo(delta);
+        }
+    }
+    public void SubAllCoolTime(int delta)
+    {
+        foreach (BaseMagic m in magics)
+        {
+            m.SubCoolTime(delta);
+        }
     }
 }

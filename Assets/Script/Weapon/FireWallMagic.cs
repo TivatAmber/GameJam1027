@@ -9,16 +9,17 @@ public class FireWallMagic : BaseMagic
     // Start is called before the first frame update
     void Start()
     {
+        level = 0;
         timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > cooldown)
+        if (level > 0 && timer > cooldown)
         {
             timer = 0;
-            Fire();
+            StartCoroutine(Fire());
         }
         timer += Time.deltaTime;
     }
@@ -43,14 +44,18 @@ public class FireWallMagic : BaseMagic
         return nearestEnemy;
 
     }
-    protected override void Fire()//矩形的aoe
+    protected override IEnumerator Fire()//矩形的aoe
     {
-        BaseEnemy target = FindEnemy();
-        if (target != null)
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-            FireWall bullet = ObjectPool.Instance.GetFireWall();
-            bullet.setBullet(speed * forward, transform.position, damage, range);
+            BaseEnemy target = FindEnemy();
+            if (target != null)
+            {
+                Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
+                FireWall bullet = ObjectPool.Instance.GetFireWall();
+                bullet.setBullet(speed * forward, transform.position, damage, range);
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
     void LateUpdate()
@@ -61,8 +66,23 @@ public class FireWallMagic : BaseMagic
             nearestDistance = Vector3.Distance(transform.position, nearestEnemy.transform.position);
         }
     }
-    protected override void Upgrade()
+    public override void UpGrade()
     {
-        // TODO
+        switch (level)
+        {
+            case 1:
+                damage = 2;
+                break;
+            case 2:
+                range = 2.5f;
+                break;
+            case 3:
+                range = 3f;
+                break;
+            case 4:
+                combo += 2;
+                break;
+        }
+        if (level < maxLevel) level++;
     }
 }

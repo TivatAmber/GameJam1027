@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireBallMagic : BaseMagic
@@ -9,16 +10,17 @@ public class FireBallMagic : BaseMagic
     // Start is called before the first frame update
     void Start()
     {
+        level = 1;
         timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > cooldown)
+        if (level > 0 && timer > cooldown)
         {
             timer = 0;
-            Fire();
+            StartCoroutine(Fire());
         }
         timer += Time.deltaTime;
     }
@@ -42,14 +44,18 @@ public class FireBallMagic : BaseMagic
         }
         return nearestEnemy;
     }
-    protected override void Fire()
+    protected override IEnumerator Fire()
     {
-        BaseEnemy target = FindEnemy();
-        if (target != null)
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-            FireBall bullet = ObjectPool.Instance.GetFireBall();
-            bullet.setBullet(speed * forward, transform.position, damage, range);
+            BaseEnemy target = FindEnemy();
+            if (target != null)
+            {
+                Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
+                FireBall bullet = ObjectPool.Instance.GetFireBall();
+                bullet.setBullet(speed * forward, transform.position, damage, range);
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
     void LateUpdate()
@@ -60,8 +66,23 @@ public class FireBallMagic : BaseMagic
             nearestDistance = Vector3.Distance(transform.position, nearestEnemy.transform.position);
         }
     }
-    protected override void Upgrade()
+    public override void UpGrade()
     {
-        // TODO
+        switch (level)
+        {
+            case 1:
+                combo++;
+                break;
+            case 2:
+                combo++;
+                break;
+            case 3:
+                damage = 3;
+                break;
+            case 4:
+                cooldown = 0.5f;
+                break;
+        }
+        if (level < maxLevel) level++;
     }
 }

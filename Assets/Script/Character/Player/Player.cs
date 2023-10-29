@@ -7,9 +7,32 @@ public class Player : BaseEntity
 {
     [SerializeField] private float maxCooldown;
     [SerializeField] private float timer;
+
+    [Header("Buff and Magic Setting")]
+    [SerializeField] private int maxBuffNumber;
+    [SerializeField] private int maxMagicNumber;
+    private int buffNumber;
+    private int magicNumber;
+
+    [Header("Exp Setting")]
     [SerializeField] private int maxExp;
+    [SerializeField] private int deltaMaxExp;
     [SerializeField] private int exp;
+    private int level;
+
     public Vector3 forward;
+    public int AvailableBufferNumber
+    {
+        get { return maxBuffNumber - buffNumber; }
+    }
+    public int AvailableMagicNumber
+    {
+        get { return maxMagicNumber - magicNumber; }
+    }
+    public int Level
+    {
+        get { return level; }
+    }
     private void Update()
     {
         ChangeSpeed();
@@ -71,5 +94,15 @@ public class Player : BaseEntity
             }
         }
         return ret;
+    }
+    public void AddExp(int delta)
+    {
+        exp += delta;
+        if (exp >= maxExp)
+        {
+            exp = 0;
+            maxExp += deltaMaxExp;
+            LevelManager.Instance.LevelUp();
+        }
     }
 }
