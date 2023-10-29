@@ -71,11 +71,14 @@ public class EntityManager : Singleton<EntityManager>
         WaitForSeconds deltaTime = new WaitForSeconds(0.1f);
         while (true)
         {
-            Hat hat = ObjectPool.Instance.GetHat();
-            enemies.Add(hat);
-            hat.Init(GetRandomPosition());
-            hatNumber++;
-            yield return deltaTime;
+            if (hatNumber < maxPapawuNumber*5)
+            {
+                Hat hat = ObjectPool.Instance.GetHat();
+                enemies.Add(hat);
+                hat.Init(GetRandomPosition());
+                hatNumber++;
+                yield return deltaTime;
+            }
         }
     }
     public void CreateBoss()
