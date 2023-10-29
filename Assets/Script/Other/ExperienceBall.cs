@@ -5,11 +5,13 @@ using UnityEngine;
 public class ExperienceBall : MonoBehaviour
 {
     [SerializeField] float maxSpeed;
-    private int Experience;
+    public int maxExperience;
     private Player player;
+    private TimeManager timeManager;
     // Start is called before the first frame update
     void Start()
     {
+        maxExperience = 1;
         player = EntityManager.Instance.player;
     }
 
@@ -30,7 +32,7 @@ public class ExperienceBall : MonoBehaviour
         {
             if (target.TryGetComponent<Player>(out var player))
             {
-                player.ChangeExperience(Experience);
+                player.ChangeExperience(maxExperience);
                 ObjectPool.Instance.DestroyExperienceBall(this);
             }
         }
@@ -39,6 +41,6 @@ public class ExperienceBall : MonoBehaviour
     {
         transform.position = position;
         this.maxSpeed = maxSpeed;
-        this.Experience = Experience;
+        this.maxExperience = Experience;
     }
 }

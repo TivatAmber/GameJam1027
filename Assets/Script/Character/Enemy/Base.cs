@@ -5,6 +5,7 @@ using System;
 
 public abstract class BaseEnemy : BaseEntity
 {
+    private TimeManager timeManager;
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected int damage;
     protected float timer = 0f;
@@ -34,11 +35,30 @@ public abstract class BaseEnemy : BaseEntity
     }
     protected void FallenThings()
     {
-        //float globalProbability = FallenProbability();
+        timeManager = GetComponent<TimeManager>();
+        float globalProbability = FallenProbability(timeManager.globalTime / 60);
+        float randomValue1 = UnityEngine.Random.value;
+        float randomValue2 = UnityEngine.Random.value;
+        float bigBallProbility = 1 - 1.8f * timeManager.globalTime / 60;
+        if (randomValue1 < globalProbability)
+        {
+            ObjectPool objectPool = FindObjectOfType<ObjectPool>();
+            ExperienceBall newBall = objectPool.GetExperienceBall();
+            
+            if (objectPool != null)
+            {
+                newBall.transform.position = transform.position;// 设置生成位置
+                if (randomValue2 < bigBallProbility)
+                {
+                    newBall.maxExperience = 5;
+                }
+                // 在这里可以设置经验球的位置、旋转等属性
+                newBall.gameObject.SetActive(true);
+            }
+        }
     }
-
-    private float FallenProbability(float timeMinite)
+    protected float FallenProbability(float timeMinite)
     {
         return 1 / 3 * timeMinite;
     }
-} 
+}
