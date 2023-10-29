@@ -7,6 +7,8 @@ public abstract class BaseEntity : MonoBehaviour
 {
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected int maxHealth;
+    [SerializeField] protected int experienceLimited;
+    protected int experience = 0;
     protected int health = 0;
     protected Vector3 speed = Vector3.zero;
     protected void Start()

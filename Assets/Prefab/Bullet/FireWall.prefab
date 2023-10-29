@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7970425267982511313}
   - component: {fileID: 4569581255047320317}
-  - component: {fileID: 6695237839717040063}
   - component: {fileID: -7044473388788355477}
+  - component: {fileID: 1201929019344574185}
   m_Layer: 0
   m_Name: FireWall
   m_TagString: Untagged
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6695237839717040063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696942299453089663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219e8e40be6b9044fa523a1e4f8cd88d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-7044473388788355477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1201929019344574185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696942299453089663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d4037c7290a4c448ea405a0eb3d811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

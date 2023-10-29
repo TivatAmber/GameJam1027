@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 75803123}
   - component: {fileID: 75803122}
+  - component: {fileID: 75803124}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -153,6 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
+  distance: 0
+  deltaMaxHealth: 0
+  maxPapawuNumber: 0
+  deltaPapawuNumber: 0
   enemies: []
   player: {fileID: 439667595}
   skills: []
@@ -171,6 +176,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &75803124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75803121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc31db4a81848f43a2ae1a3e0bc5f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  global: 1
+  fireBall: {fileID: 9112122593150808308, guid: 4e0125531562a7f4081eb7b44d14eda0, type: 3}
+  fireWall: {fileID: 1201929019344574185, guid: 056d8ee626919b54a88fa064157a40a3, type: 3}
+  tear: {fileID: 6856713262510443482, guid: 5d70b8277aefa194e9582aeacdfe59cf, type: 3}
+  soulSpear: {fileID: 0}
+  papawu: {fileID: 48137562671334722, guid: 2c7c66dc0362fb2459bcca7b7d76601f, type: 3}
+  pumpkin: {fileID: 7233066066036913729, guid: 90298d8f08c24dd47bea1595431025e8, type: 3}
+  hat: {fileID: 4719945849670989605, guid: 6221e7081f974e744ad692d61c47d341, type: 3}
+  dashSkill: {fileID: 0}
+  healSkill: {fileID: 0}
+  theWallSkill: {fileID: 0}
+  hugeSoulSpearSkill: {fileID: 0}
+  healBall: {fileID: 0}
+  healTower: {fileID: 0}
+  hugeSoulSpear: {fileID: 0}
 --- !u!1 &176274227
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,9 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29a130fbc601c04196bc68e5a053aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2
-  maxHealth: 10
-  health: 0
+  maxSpeed: 3
+  maxHealth: 2
   attackCooldown: 0.5
   damage: 2
 --- !u!61 &176274231
@@ -446,9 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63146894de5b87148ac6f2a9348d1b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxSpeed: 4
   maxHealth: 1
-  health: 1
   attackCooldown: 0.5
   damage: 1
   boomR: 3
@@ -573,7 +603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   maxHealth: 10
-  health: 10
+  maxCooldown: 0
+  timer: 0
   forward: {x: 0, y: 0, z: 0}
 --- !u!212 &439667596
 SpriteRenderer:
@@ -887,14 +918,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822433880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 053f01b50ea135c409e6bc102116638b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
   maxHealth: 10
-  health: 10
   attackCooldown: 1
   damage: 1
   timeBetweenSkills: 10
@@ -1128,6 +1158,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1928603365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928603367}
+  - component: {fileID: 1928603366}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1928603366
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928603365}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.4647562, g: 0.85882354, b: 0.07843138, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1928603367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928603365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6938, z: 1}
+  m_LocalScale: {x: 268.8708, y: 268.8708, z: 268.8708}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1139,3 +1253,4 @@ SceneRoots:
   - {fileID: 822433882}
   - {fileID: 176274229}
   - {fileID: 75803123}
+  - {fileID: 1928603367}
