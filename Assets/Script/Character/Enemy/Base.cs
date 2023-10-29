@@ -8,6 +8,7 @@ public abstract class BaseEnemy : BaseEntity
     private TimeManager timeManager;
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected int damage;
+    [SerializeField] protected int additionalHealth;
     protected float timer = 0f;
     new private void Start()
     {
@@ -25,11 +26,11 @@ public abstract class BaseEnemy : BaseEntity
     }
     public void AddMaxHealth(int delta)
     {
-        maxHealth += delta;
+        additionalHealth += delta;
     }
     public void Init(Vector3 positon)
     {
-        health = maxHealth;
+        health = maxHealth + additionalHealth;
         timer = attackCooldown;
         transform.position = positon;
     }

@@ -7,6 +7,8 @@ public class Player : BaseEntity
 {
     [SerializeField] private float maxCooldown;
     [SerializeField] private float timer;
+    [SerializeField] private int maxExp;
+    [SerializeField] private int exp;
     public Vector3 forward;
     private void Update()
     {
