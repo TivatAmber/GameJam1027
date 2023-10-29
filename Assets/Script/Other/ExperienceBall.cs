@@ -31,7 +31,6 @@ public class ExperienceBall : MonoBehaviour
         {
             if (target.TryGetComponent<Player>(out var player))
             {
-                player.ChangeExperience(maxExperience);
                 ObjectPool.Instance.DestroyExperienceBall(this);
             }
         }
