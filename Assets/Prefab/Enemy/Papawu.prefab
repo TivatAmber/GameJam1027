@@ -173,6 +173,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 3
   maxHealth: 2
-  health: 0
   attackCooldown: 1
   damage: 1
