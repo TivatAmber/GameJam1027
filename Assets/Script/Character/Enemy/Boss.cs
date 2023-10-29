@@ -103,7 +103,10 @@ public class Boss : BaseEnemy
         }
         if (target != null && target.tag == "Enemy")
         {
-            Destroy(target);
+            if (target.TryGetComponent<BaseEnemy>(out var targetEnemy))
+            {
+                targetEnemy.BeKilledByBoss();
+            }
         }
     }
     protected override void Move()
@@ -240,5 +243,10 @@ public class Boss : BaseEnemy
         isCharging = true;
         yield return new WaitForSeconds(timeLimitOne);
         isCharging = false;
+    }
+    protected override void Die()
+    {
+        EntityManager.Instance.enemies.Remove(this);
+        Destroy(gameObject);
     }
 }

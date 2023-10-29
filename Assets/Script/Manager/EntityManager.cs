@@ -84,6 +84,7 @@ public class EntityManager : Singleton<EntityManager>
     public void CreateBoss()
     {
         Boss now = ObjectPool.Instance.GetBoss();
+        Instance.enemies.Add(now);
         now.transform.position = GetRandomPosition();
     }
     private IEnumerator ControllerCoroutine()

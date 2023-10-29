@@ -98,4 +98,8 @@ public abstract class BaseEnemy : BaseEntity
     {
         return 1.0f / (20 + 20 * timeMinite);
     }
+    public void BeKilledByBoss()
+    {
+        Die();
+    }
 }
