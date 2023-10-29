@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7919444208974083109}
   - component: {fileID: 6118919363021586690}
-  - component: {fileID: 1421868849717657057}
   - component: {fileID: 4792977411226528099}
+  - component: {fileID: 3236680721136371585}
   m_Layer: 0
   m_Name: HealBall
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b4efd9e6ad28564f8e25c80b9114349, type: 3}
   m_Color: {r: 0.23264384, g: 0.9528302, b: 0.12284911, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1421868849717657057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7041234430303804152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0945b095eb56eb245a89386d1b7942ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0
 --- !u!58 &4792977411226528099
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +121,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3236680721136371585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041234430303804152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8fba8e6998898459383f47ba53d253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3

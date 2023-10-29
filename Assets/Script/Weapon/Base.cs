@@ -25,6 +25,7 @@ public abstract class BaseMagic : MonoBehaviour, IUpGrade
     public virtual void AddCombo(int delta)
     {
         combo++;
+        Debug.Log(combo);
     }
     public virtual void AddRange(int percent)
     {

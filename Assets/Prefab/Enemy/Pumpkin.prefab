@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 714678119674741157}
   - component: {fileID: 6966213234932973999}
   - component: {fileID: 7233066066036913729}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pumpkin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de6ab4c6ae44479409dd58796f4c0d93, type: 3}
   m_Color: {r: 0.015686274, g: 1, b: 0.06793748, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -168,12 +168,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8733401222482080849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63146894de5b87148ac6f2a9348d1b3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d57d5a6168e28e47893599c17a9d971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
+  maxSpeed: 3
   maxHealth: 1
-  health: 0
+  experienceLimited: 0
   attackCooldown: 3
   damage: 3
   additionalHealth: 0

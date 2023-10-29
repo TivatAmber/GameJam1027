@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Experience
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Experience
   - Enemy
   - Plane
   - 
@@ -44,4 +45,7 @@ TagManager:
     locked: 0
   - name: New Layer 1
     uniqueID: 4263670977
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 999871547
     locked: 0

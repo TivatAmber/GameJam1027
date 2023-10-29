@@ -15,6 +15,7 @@ public class Player : BaseEntity
     private int magicNumber;
 
     [Header("Exp Setting")]
+    [SerializeField] private CircleCollider2D expCellector;
     [SerializeField] private float getExpRange;
     [SerializeField] private int maxExp;
     [SerializeField] private int deltaMaxExp;
@@ -33,6 +34,27 @@ public class Player : BaseEntity
     public int Level
     {
         get { return level; }
+    }
+    public int Health
+    {
+        get { return health; }
+    }
+    public int MaxHealth
+    {
+        get { return maxHealth; }
+    }
+    public int Exp
+    {
+        get { return exp; }
+    }
+    public int MaxExp
+    {
+        get { return maxExp; }
+    }
+    new private void Start()
+    {
+        base.Start();
+        expCellector.radius = getExpRange;
     }
     private void Update()
     {
@@ -110,5 +132,11 @@ public class Player : BaseEntity
     public void AddGetExpRange(int delta)
     {
         getExpRange += delta;
+        expCellector.radius = getExpRange;
+    }
+    protected override void Die()
+    {
+        Application.Quit();
+        Debug.Log("End Game");
     }
 }

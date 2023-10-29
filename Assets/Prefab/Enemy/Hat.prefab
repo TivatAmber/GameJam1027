@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 714678119674741157}
   - component: {fileID: 6966213234932973999}
   - component: {fileID: 4719945849670989605}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc7665864fa011740ba60535b02ece2a, type: 3}
   m_Color: {r: 0.096843794, g: 0.015686274, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -171,8 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae3900c0d010fe4aa98ab5829e16634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxSpeed: 2
   maxHealth: 1
+  experienceLimited: 0
   attackCooldown: 1
   damage: 1
   additionalHealth: 0

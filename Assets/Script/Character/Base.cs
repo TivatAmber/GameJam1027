@@ -22,6 +22,10 @@ public abstract class BaseEntity : MonoBehaviour
     public void ChangeHealth(int delta)
     {
         health -= delta;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         if (health <= 0)
         {
             Die();

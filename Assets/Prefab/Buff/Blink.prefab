@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   maxLevel: 5
-  deltaCoolTime: 10
+  deltaCoolTimePercent: 10

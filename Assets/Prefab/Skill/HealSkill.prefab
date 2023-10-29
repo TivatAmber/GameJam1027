@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 595136048d26dad439b08cb4f737e738, type: 3}
   m_Color: {r: 0.09119487, g: 1, b: 0.99249697, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  distance: 3
+  distance: 8
   probability: 0
   maxSpeed: 3

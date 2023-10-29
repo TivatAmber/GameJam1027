@@ -29,36 +29,33 @@ public class FireBallMagic : BaseMagic
     {
         List<BaseEnemy> enemies = EntityManager.Instance.enemies;//所有怪物列表
 
+        if (nearestEnemy != null && !nearestEnemy.gameObject.activeSelf)
+        {
+            nearestEnemy = null;
+        }
         foreach (BaseEnemy enemy in enemies)//搜索最近的
         {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance)
+            if (nearestEnemy == null || distance < nearestDistance)
             {
                 nearestEnemy = enemy;
                 nearestDistance = distance;
             }
         }
-        if (nearestEnemy != null && !nearestEnemy.gameObject.activeSelf)
-        {
-            nearestEnemy = null;
-        }
         return nearestEnemy;
     }
     protected override IEnumerator Fire()
     {
-        lock (EntityManager.Instance.enemies)
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            for (int attackTime = 0; attackTime < combo; attackTime++)
+            BaseEnemy target = FindEnemy();
+            if (target != null)
             {
-                BaseEnemy target = FindEnemy();
-                if (target != null)
-                {
-                    Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
-                    FireBall bullet = ObjectPool.Instance.GetFireBall();
-                    bullet.setBullet(speed * forward, transform.position, damage, range);
-                }
-                yield return new WaitForSeconds(0.1f);
+                Vector3 forward = ToolFunc.GetForward(gameObject, target.gameObject);
+                FireBall bullet = ObjectPool.Instance.GetFireBall();
+                bullet.setBullet(speed * forward, transform.position, damage, range);
             }
+            yield return new WaitForSeconds(0.5f);
         }
     }
     void LateUpdate()
