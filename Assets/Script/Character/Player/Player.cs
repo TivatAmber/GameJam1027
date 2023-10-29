@@ -80,6 +80,7 @@ public class Player : BaseEntity
         if (skill != null) skill.Influence();
         timer = 0f;
     }
+    
     BaseSkill FindNearestSkill()
     {
         float dist = 0f;

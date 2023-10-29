@@ -408,5 +408,29 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
     }
     #endregion
+    #region ExperienceBall
+    [SerializeField] ExperienceBall ExperienceBall;
+    List<ExperienceBall> ExperienceBalls = new List<ExperienceBall>();
+    public ExperienceBall GetExperienceBall()
+    {
+        ExperienceBall ret;
+        if (ExperienceBalls.Count > 0)
+        {
+            ret = ExperienceBalls[0];
+            ExperienceBalls.Remove(ret);
+        }
+        else
+        {
+            ret = Instantiate(ExperienceBall);
+        }
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
+    public void DestroyExperienceBall(ExperienceBall obj)
+    {
+        ExperienceBalls.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+    #endregion
     #endregion
 }

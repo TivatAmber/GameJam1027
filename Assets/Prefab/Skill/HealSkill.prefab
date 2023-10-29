@@ -94,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4250267802547039367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52754d153fdd6314bb7512f50c989b90, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d4da6e55f84ca14d82556ac1d7c9a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  distance: 3
+  damage: 0
+  distance: 0
   probability: 0
-  maxSpeed: 2
+  maxSpeed: 0
