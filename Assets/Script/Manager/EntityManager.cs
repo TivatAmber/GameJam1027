@@ -71,7 +71,7 @@ public class EntityManager : Singleton<EntityManager>
         WaitForSeconds deltaTime = new WaitForSeconds(0.1f);
         while (true)
         {
-            if (hatNumber < maxPapawuNumber*5)
+            if (hatNumber < maxPapawuNumber * 5)
             {
                 Hat hat = ObjectPool.Instance.GetHat();
                 enemies.Add(hat);
