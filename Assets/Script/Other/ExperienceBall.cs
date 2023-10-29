@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExperienceBall : MonoBehaviour
@@ -31,7 +29,6 @@ public class ExperienceBall : MonoBehaviour
         {
             if (target.TryGetComponent<Player>(out var player))
             {
-                player.ChangeExperience(maxExperience);
                 ObjectPool.Instance.DestroyExperienceBall(this);
             }
         }
