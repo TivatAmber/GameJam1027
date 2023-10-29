@@ -168,14 +168,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8733401222482080849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d57d5a6168e28e47893599c17a9d971, type: 3}
+  m_Script: {fileID: 11500000, guid: 63146894de5b87148ac6f2a9348d1b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
-  maxHealth: 1
-  health: 0
-  attackCooldown: 3
-  damage: 3
-  boomR: 2
-  boomDemage: 5
-  boomDelay: 2
+  maxSpeed: 0
+  maxHealth: 0
+  attackCooldown: 0
+  damage: 0
+  boomR: 0
+  boomDemage: 0
+  boomDelay: 0

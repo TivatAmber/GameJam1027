@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2164185824729744499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096d7ecea04c1ca478fbb1e0ea1cee46, type: 3}
+  m_Script: {fileID: 11500000, guid: 91e0f16389ecff1419803b69b91f2a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  speed: 0.1
-  range: 10
-  cooldown: 2
+  damage: 0
+  speed: 0
+  range: 0
+  cooldown: 0

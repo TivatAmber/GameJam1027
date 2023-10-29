@@ -95,10 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7041234430303804152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8fba8e6998898459383f47ba53d253, type: 3}
+  m_Script: {fileID: 11500000, guid: 0945b095eb56eb245a89386d1b7942ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 0
 --- !u!58 &4792977411226528099
 CircleCollider2D:
   m_ObjectHideFlags: 0

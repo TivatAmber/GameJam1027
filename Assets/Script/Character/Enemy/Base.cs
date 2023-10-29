@@ -18,7 +18,8 @@ public abstract class BaseEnemy : BaseEntity
     }
     protected override void Die()
     {
-        //ObjectPool.Instance.DestroyEnemy(this);
+        FallenThings();
+        ObjectPool.Instance.DestroyEnemy(this);
         EntityManager.Instance.RemoveEnemy(this);
     }
     public void AddMaxHealth(int delta)
@@ -30,5 +31,14 @@ public abstract class BaseEnemy : BaseEntity
         health = maxHealth;
         timer = attackCooldown;
         transform.position = positon;
+    }
+    protected void FallenThings()
+    {
+        //float globalProbability = FallenProbability();
+    }
+
+    private float FallenProbability(float timeMinite)
+    {
+        return 1 / 3 * timeMinite;
     }
 } 
