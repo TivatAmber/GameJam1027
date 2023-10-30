@@ -11,6 +11,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private List<IUpGrade> upGrades = new List<IUpGrade>();
     [SerializeField] private List<Button> buttons = new List<Button>();
     [SerializeField] private GameObject canvas;
+    //?
     List<int> nowDraw = new List<int>();
     private void Awake()
     {
@@ -24,13 +25,16 @@ public class LevelManager : Singleton<LevelManager>
         }
         foreach (Button button in buttons)
         {
+            //?
             button.onClick.AddListener(End);
         }
     }
     public void LevelUp()
     {
         Time.timeScale = 0f;
+        //?
         canvas.SetActive(true);
+        //?
         nowDraw = DrawCard();
     }
     private List<int> DrawCard() {

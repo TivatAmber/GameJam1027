@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-internal static class KeyPosition
+internal static class KeyPosition//¥¶¿Ì ‰»Î
 {
     public static KeyCode upCode = KeyCode.UpArrow;
     public static KeyCode downCode = KeyCode.DownArrow;

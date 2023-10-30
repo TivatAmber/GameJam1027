@@ -69,8 +69,13 @@ public class Boss : BaseEnemy
     private void LateUpdate()//存储每一帧末尾的血量
     {
         nowHP = health;
+        if(nowHP < 0)
+        {
+            Debug.Log("ok");
+            Destroy(this);
+        }
     }
-
+    
     private void Stop()
     {
         if (time > stopTimes)
@@ -127,7 +132,6 @@ public class Boss : BaseEnemy
         for (int i = 0; i <= segments; i++)
         {
             float angle = i * anglePerSegment;
-
             float x = center.x + Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
             float y = center.y + Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 

@@ -9,7 +9,7 @@ public class Singleton<T> : MonoBehaviour
     static T instance;
     public static T Instance
     {
-        get
+        get//
         {
             if (instance == null)
             {
@@ -22,7 +22,7 @@ public class Singleton<T> : MonoBehaviour
     {
         if (global)
         {
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);//不会销毁对象
         }
         OnStart();
     }
