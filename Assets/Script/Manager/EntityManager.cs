@@ -71,7 +71,7 @@ public class EntityManager : Singleton<EntityManager>
         WaitForSeconds deltaTime = new WaitForSeconds(0.1f);
         while (true)
         {
-            if (hatNumber < maxPapawuNumber*5)
+            if (hatNumber < maxPapawuNumber * 5)
             {
                 Hat hat = ObjectPool.Instance.GetHat();
                 enemies.Add(hat);
@@ -81,22 +81,34 @@ public class EntityManager : Singleton<EntityManager>
             }
         }
     }
+    public void CreateBoss()
+    {
+        Boss now = ObjectPool.Instance.GetBoss();
+        Instance.enemies.Add(now);
+        now.transform.position = GetRandomPosition();
+    }
     private IEnumerator ControllerCoroutine()
     {
         WaitForSeconds deltaTime1 = new WaitForSeconds(150);
         WaitForSeconds deltaTime2 = new WaitForSeconds(30);
-        StartCoroutine(CreatePapawu());
-        StartCoroutine(CreatePumpkin());
+        WaitForSeconds deltaTime3 = new WaitForSeconds(60);
         while (true)
         {
+            StartCoroutine(CreatePapawu());
+            StartCoroutine(CreatePumpkin());
             yield return deltaTime1;
             StopCoroutine(CreatePapawu());
             StopCoroutine(CreatePumpkin());
             StartCoroutine(CreateHat());
             yield return deltaTime2;
             StartCoroutine(CreatePapawu());
+            StartCoroutine(CreatePumpkin());
             StopCoroutine(CreateHat());
+            yield return deltaTime3;
+            StopCoroutine(CreatePapawu());
             StopCoroutine(CreatePumpkin());
+            CreateBoss();
+            yield return deltaTime2;
         }
     }
     private Vector3 GetRandomPosition()

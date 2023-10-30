@@ -6,10 +6,10 @@ using UnityEngine;
 
 internal static class KeyPosition//¥¶¿Ì ‰»Î
 {
-    public static KeyCode upCode = KeyCode.UpArrow;
-    public static KeyCode downCode = KeyCode.DownArrow;
-    public static KeyCode leftCode = KeyCode.LeftArrow;
-    public static KeyCode rightCode = KeyCode.RightArrow;
+    public static KeyCode upCode = KeyCode.W;
+    public static KeyCode downCode = KeyCode.S;
+    public static KeyCode leftCode = KeyCode.A;
+    public static KeyCode rightCode = KeyCode.D;
     public static KeyCode getSkill = KeyCode.E;
 }
 public static class Order

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ExperienceBall : MonoBehaviour
@@ -5,6 +6,7 @@ public class ExperienceBall : MonoBehaviour
     [SerializeField] float maxSpeed;
     public int maxExperience;
     private Player player;
+    private bool used = false;
     private TimeManager timeManager;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,11 @@ public class ExperienceBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector3 forward = ToolFunc.GetForward(gameObject, player.gameObject);
+        if (used)
+        {
+            Vector3 forward = ToolFunc.GetForward(gameObject, player.gameObject);
+            transform.position += forward * maxSpeed * Time.deltaTime;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,8 +35,13 @@ public class ExperienceBall : MonoBehaviour
         {
             if (target.TryGetComponent<Player>(out var player))
             {
+                player.AddExp(maxExperience);
                 ObjectPool.Instance.DestroyExperienceBall(this);
             }
+        }
+        if (target != null && target.CompareTag("Experience"))
+        {
+            used = true;
         }
     }
     public void setExperienceBall(Vector3 position, int Experience, float maxSpeed)

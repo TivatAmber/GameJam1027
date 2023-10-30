@@ -432,5 +432,13 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
     }
     #endregion
+    [SerializeField] Boss boss;
+    public Boss GetBoss()
+    {
+        Boss ret;
+        ret = Instantiate(boss);
+        ret.gameObject.SetActive(true);
+        return ret;
+    }
     #endregion
 }

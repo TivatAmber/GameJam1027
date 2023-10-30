@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public abstract class BaseEnemy : BaseEntity
 {
@@ -10,6 +11,10 @@ public abstract class BaseEnemy : BaseEntity
     [SerializeField] protected int damage;
     [SerializeField] protected int additionalHealth;
     protected float timer = 0f;
+    private void Awake()
+    {
+        timeManager = TimeManager.Instance;
+    }
     new private void Start()
     {
         base.Start();
@@ -21,6 +26,7 @@ public abstract class BaseEnemy : BaseEntity
     protected override void Die()
     {
         FallenThings();
+        FallenSkills();
         ObjectPool.Instance.DestroyEnemy(this);
         EntityManager.Instance.RemoveEnemy(this);
     }
@@ -36,7 +42,6 @@ public abstract class BaseEnemy : BaseEntity
     }
     protected void FallenThings()
     {
-        timeManager = TimeManager.Instance;
         float globalProbability = FallenProbability(timeManager.globalTime / 60);
         float randomValue1 = UnityEngine.Random.value;
         float randomValue2 = UnityEngine.Random.value;
@@ -58,8 +63,43 @@ public abstract class BaseEnemy : BaseEntity
             }
         }
     }
+    private void FallenSkills()
+    {
+        float probability = FallenSkill(timeManager.globalTime / 60f);
+        probability = Mathf.Max(0.01f, probability);
+        if (UnityEngine.Random.value < probability)
+        {
+            float now = UnityEngine.Random.value;
+            BaseSkill obj = null;
+            if (now < 0.5f)
+            {
+                obj = ObjectPool.Instance.GetDashSkill();
+            } 
+            else if (now < 0.6f)
+            {
+                obj = ObjectPool.Instance.GetHugeSoulSpearSkill();
+            }
+            else if (now < 0.75f)
+            {
+                obj = ObjectPool.Instance.GetHealSkill();
+            }
+            if (obj != null)
+            {
+                EntityManager.Instance.skills.Add(obj);
+                obj.transform.position = gameObject.transform.position;
+            }
+        }
+    }
     protected float FallenProbability(float timeMinite)
     {
-        return 1 / 3 * timeMinite;
+        return 1.0f / 3.0f * timeMinite;
+    }
+    protected float FallenSkill(float timeMinite)
+    {
+        return 1.0f / (20 + 20 * timeMinite);
+    }
+    public void BeKilledByBoss()
+    {
+        Die();
     }
 }

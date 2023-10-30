@@ -28,28 +28,25 @@ public class HeatMagic : BaseMagic
     }
     protected override IEnumerator Fire()//对所有敌人
     {
-        lock (EntityManager.Instance.enemies)
+        for (int attackTime = 0; attackTime < combo; attackTime++)
         {
-            for (int attackTime = 0; attackTime < combo; attackTime++)
+            List<BaseEnemy> enemies = EntityManager.Instance.enemies;
+            List<BaseEnemy> targets = new List<BaseEnemy>();
+            foreach (BaseEnemy enemy in enemies)
             {
-                List<BaseEnemy> enemies = EntityManager.Instance.enemies;
-                List<BaseEnemy> targets = new List<BaseEnemy>();
-                foreach (BaseEnemy enemy in enemies)
+                if (ToolFunc.Dist(transform.position, enemy.transform.position) < range)
                 {
-                    if (ToolFunc.Dist(transform.position, enemy.transform.position) < range)
-                    {
-                        targets.Add(enemy);
-                    }
+                    targets.Add(enemy);
                 }
-                foreach (BaseEnemy enemy in targets)
-                {
-                    if (enemy.TryGetComponent<BaseEnemy>(out var enemyHealth))
-                    {
-                        enemyHealth.ChangeHealth(damage);
-                    }
-                }
-                yield return new WaitForSeconds(0.1f);
             }
+            foreach (BaseEnemy enemy in targets)
+            {
+                if (enemy.TryGetComponent<BaseEnemy>(out var enemyHealth))
+                {
+                    enemyHealth.ChangeHealth(damage);
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
     public override void UpGrade()

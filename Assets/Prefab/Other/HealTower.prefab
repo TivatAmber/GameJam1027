@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243798758645849128}
   - component: {fileID: 5361834617178412925}
-  - component: {fileID: 1326767905277175576}
+  - component: {fileID: -4580039442587726623}
   m_Layer: 0
   m_Name: HealTower
   m_TagString: Untagged
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.067698956, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 595136048d26dad439b08cb4f737e738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1326767905277175576
+--- !u!114 &-4580039442587726623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 799815526523139898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df23bb593f3386b4487d08a16419a58c, type: 3}
+  m_Script: {fileID: 11500000, guid: 932cc1c0649b9864c9e5774851274094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -38,7 +38,7 @@ public class LevelManager : Singleton<LevelManager>
         nowDraw = DrawCard();
     }
     private List<int> DrawCard() {
-        System.Random random = new System.Random(242);
+        System.Random random = new System.Random(Time.frameCount);
         var randomNumbers = Enumerable.Range(0, upGrades.Count).OrderBy(_ => random.Next()).Take(buttons.Count).ToList();
         foreach (int idx in Enumerable.Range(0, buttons.Count))
         {

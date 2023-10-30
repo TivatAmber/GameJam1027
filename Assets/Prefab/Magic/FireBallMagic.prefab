@@ -47,6 +47,6 @@ MonoBehaviour:
   damage: 2
   combo: 1
   maxLevel: 5
-  speed: 1
+  speed: 0.5
   range: 5
   cooldown: 2
